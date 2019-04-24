@@ -30,7 +30,7 @@ function paintGreeting(text){
     // 텍스트를 색칠하려면 폼을 숨겨야한다.
     form.classList.remove(SHOWING_CN);
     greeting.classList.add(SHOWING_CN);
-    greeting.innerText = `Hello ${text}`;
+    greeting.innerText = `어서오세요 ${text}님!`;
 }
 
 // 저장된 이름 불러오기

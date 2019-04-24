@@ -40,14 +40,16 @@ function paintToDo(text){
     const delBtn = document.createElement("button");
     const span = document.createElement("span");
     const newId = toDos.length + 1;
-    delBtn.innerText = "❌️";
+    // delBtn.innerText = "❌️";
+    delBtn.innerText = "×"
+    
     // 클릭하면 deleteToDo 실행
     delBtn.addEventListener("click", deleteToDo);
     span.innerText = text;
 
     // li에 span과 delBtn을 넣고
-    li.appendChild(span);
     li.appendChild(delBtn);
+    li.appendChild(span);
     li.id = newId;
 
     // toDoList에 li를 넣는다.
