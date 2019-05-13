@@ -219,3 +219,7 @@ body{
     z-index: -1;
     animation: fadeIn 3s ease;
 }
+
+.liveimg:nth-child(16){
+    animation: fadeIn 3s ease;
+}

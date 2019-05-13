@@ -1,5 +1,6 @@
 /* 화면 크기에 반응하는 이미지 */
 .liveimg {
+    z-index: -1;
 
     /* Set rules to fill background */
     min-height: 100%;
