@@ -21,7 +21,7 @@ function importImages(){
 }
 function setAlpha(n){
     // console.log(`setAlpha(${imgNum}) called`);
-    alphaValue = alphaValue + 0.02 * nightMode;
+    alphaValue = alphaValue + 0.03 * nightMode;
     // if(alphaValue < 0 || alphaValue > 1){
     //     clearInterval(setAlphaInterval);
     //     // nightMode = nightMode * -1;
@@ -54,7 +54,7 @@ function changeImage(){
     }
     
     switch(imgNum){
-        case 15 :
+        case 15 : 
         console.log(`case ${imgNum}`);
         images[imgNum].classList.remove("display_none");
         images[0].classList.remove("display_none");
@@ -79,7 +79,7 @@ function changeImage(){
         if(alphaValue < 0 || alphaValue > 1){
             clearInterval(setAlphaInterval);
         } 
-    }, 50);
+    }, 20);
     
     
 }
@@ -96,17 +96,38 @@ function changeImage(){
 //     console.log(alphaValue, nightMode);
 // }
 
+function imgTimer(){
+    const date = new Date();
+    const daySec = 24 * 60 * 60;
+    console.log(daySec);
+    const nowSec = (date.getHours() * 60 * 60 + date.getMinutes() * 60 + date.getSeconds()).toFixed(3);
+    // const nowSec = (19.5 * 60 * 60).toFixed(3); //테스트
+    console.log(nowSec);
+    const dayValue = nowSec / daySec;
+    console.log(dayValue);
+
+    
+
+    var imgPerformance = setInterval(function(){
+        changeImage();
+        if(imgNum + 3 > dayValue * 15){
+            clearInterval(imgPerformance);
+        }
+    }, 1000);
+}
+
 function paintImage(){
     importImages(); //이미지 불러오기
 
-    var testNum = -1;
     // changeImage(14); //이미지 15번으로 변경
     // setInterval(function(){
     //     changeImage(testNum == 15 ? testNum = 0 : ++testNum);
     // }, 2000)
     
     images[0].classList.remove("display_none");
-    setInterval(changeImage, 3000);
+    imgTimer();
+
+    // setInterval(changeImage, 3000);
 }
 
 function init(){
